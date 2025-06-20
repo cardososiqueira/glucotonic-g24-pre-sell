@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glucotonic - Balance Blood Sugar & Boost Your Energy Naturally!</title>
+    <!-- Tailwind CSS CDN (Carregamento rápido para design responsivo) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Importação da fonte Inter para consistência visual e legibilidade */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Fundo cinza-azulado claro, consistente com a marca */
+            line-height: 1.6; /* Espaçamento de linha para melhor leitura */
+        }
+        .container {
+            max-width: 960px; /* Largura máxima para o conteúdo central */
+        }
+        /* Cor de fundo verde escuro, seguindo a paleta Glucotonic */
+        .glucotonic-dark-bg {
+            background-color: #113322; /* Um verde escuro profundo */
+        }
+        /* Estilo para o botão de Chamada para Ação (CTA) principal - verde vibrante */
+        .glucotonic-cta-btn {
+            background-color: #22c55e; /* Tailwind emerald-500 */
+            transition: background-color 0.3s ease; /* Transição suave para o hover */
+        }
+        .glucotonic-cta-btn:hover {
+            background-color: #16a34a; /* Tailwind emerald-600 - verde mais escuro no hover */
+        }
+        /* Cor de fundo para seções de destaque secundárias - verde claro */
+        .glucotonic-light-accent-bg {
+            background-color: #d1fae5; /* Tailwind emerald-50 - verde muito claro */
+        }
+        /* Cores de texto específicas da marca */
+        .text-glucotonic-green {
+            color: #10b981; /* Tailwind emerald-600 */
+        }
+        .text-glucotonic-dark-green {
+            color: #065f46; /* Tailwind emerald-900 */
+        }
+        /* Animação de pulso para os botões CTA */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
+        }
+        .animate-pulse {
+            animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+    </style>
+
+    <!-- INÍCIO DAS TAGS DE RASTREAMENTO DO GOOGLE (OTIMIZADAS PARA GITHUB PAGES) -->
+    <!-- Como esta página será hospedada diretamente (ex: via GitHub Pages),
+         as tags gtag.js para Google Analytics 4 e Google Ads podem ser incluídas
+         diretamente no <head> e funcionarão sem problemas de iframe/CSP. -->
+
+    <!-- GOOGLE ANALYTICS 4 (GA4) Global Site Tag (gtag.js) -->
+    <!-- O 'async' garante que o carregamento não bloqueie a renderização da página. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5VFGCD0NBR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5VFGCD0NBR'); // Seu ID da Métrica do Google Analytics 4
+    </script>
+
+    <!-- GOOGLE ADS Global Site Tag (gtag.js) e Snippet de Evento -->
+    <!-- Este script é necessário para o rastreamento de conversões do Google Ads. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17221338612"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17221338612'); // Seu ID de Conversão do Google Ads
+    </script>
+
+    <!-- Função de Relatório de Conversão do Google Ads (para cliques em CTA) -->
+    <!-- Esta função será chamada pelo JavaScript dos botões CTA. -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          // Em um ambiente real, você pode querer redirecionar aqui,
+          // mas como o link já abre em uma nova aba (_blank),
+          // o redirecionamento manual é desnecessário.
+          // window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17221338612/9LMqCOPbzd4aEPSL45NA', // Seu ID e Rótulo de Conversão do Google Ads
+          'value': 1.0, // Valor da conversão (ajuste conforme o valor do lead/clique)
+          'currency': 'USD', // Moeda da conversão
+          'event_callback': callback // Callback para executar após o evento ser enviado
+      });
+      return false; // Retorna false para não interferir com o clique do link
+    }
+    </script>
+    <!-- FIM DAS TAGS DE RASTREAMENTO DO GOOGLE -->
+
+</head>
+<body class="text-gray-800 antialiased"> <!-- Adicionado 'antialiased' para melhor renderização de texto -->
+
+    <!-- Hero Section - Seção de destaque inicial -->
+    <header class="glucotonic-dark-bg text-white py-12 md:py-16 shadow-lg rounded-b-xl">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+                Unlock the Secret to <span class="text-yellow-300">Balanced Blood Sugar</span> & Unstoppable Energy!
+            </h1>
+            
+            <!-- Imagem proeminente do produto -->
+            <div class="my-8 md:my-10 flex justify-center">
+                <!-- Por favor, substitua esta URL pela URL real da sua imagem principal do Glucotonic. -->
+                <img src="https://getglucotonic.com/assets/img/hero-img.webp" 
+                     onerror="this.onerror=null;this.src='https://getglucotonic.com/assets/img/hero-img.webp';"
+                     alt="Bottles of Glucotonic product" class="rounded-lg shadow-xl w-4/5 md:w-1/2 lg:w-1/3 h-auto max-w-lg">
+            </div>
+
+            <p class="text-lg md:text-xl mb-8 font-light max-w-2xl mx-auto">
+                Tired of blood sugar spikes and constant fatigue? Glucotonic is the natural solution you need to regain control of your health and vitality.
+            </p>
+            <!-- Botão CTA principal na Hero Section -->
+            <a href="https://getglucotonic.com/d/order-now.php#aff=Legnar" target="_blank" rel="noopener noreferrer"
+               id="cta-button-hero"
+               class="glucotonic-cta-btn inline-block text-white font-bold py-4 px-8 rounded-full shadow-xl hover:scale-105 transform transition duration-300 ease-in-out text-xl md:text-2xl animate-pulse">
+                Balance My Blood Sugar Now!
+            </a>
+            <p class="mt-4 text-sm font-light">Secure your Glucotonic supply through our exclusive link.</p>
+        </div>
+    </header>
+
+    <!-- Problem Section - Aborda as dores do público-alvo -->
+    <section class="py-12 md:py-16 glucotonic-light-accent-bg shadow-md rounded-lg mx-auto mt-8 px-6 container">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-4xl font-bold text-glucotonic-dark-green mb-4">Do Any of These Challenges Sound Familiar?</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto">Millions worldwide struggle daily with blood sugar imbalances and their impacts.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+            <div class="bg-white p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300">
+                <div class="text-glucotonic-green text-5xl mb-4">🩸</div>
+                <h3 class="text-xl font-semibold mb-2">Blood Sugar Spikes & Crashes</h3>
+                <p class="text-gray-700">Experiencing energy swings, extreme fatigue, and difficulty concentrating?</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300">
+                <div class="text-glucotonic-green text-5xl mb-4">🍕</div>
+                <h3 class="text-xl font-semibold mb-2">Uncontrollable Cravings</h3>
+                <p class="text-gray-700">Struggling with intense urges for sweets and carbs, sabotaging your diet and well-being?</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300">
+                <div class="text-glucotonic-green text-5xl mb-4">🔋</div>
+                <h3 class="text-xl font-semibold mb-2">Persistent Fatigue</h3>
+                <p class="text-gray-700">Waking up tired and lacking motivation, even after a full night's sleep?</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300">
+                <div class="text-glucotonic-green text-5xl mb-4">⚖️</div>
+                <h3 class="text-xl font-semibold mb-2">Weight Management Struggles</h3>
+                <p class="text-gray-700">The link between blood sugar and weight is critical. Do you feel like you're losing this battle?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section - Apresenta o Glucotonic como a solução -->
+    <section class="py-12 md:py-16 bg-white shadow-md rounded-lg mx-auto mt-8 px-6 container">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-4xl font-bold text-glucotonic-dark-green mb-4">Introducing Glucotonic: Your Natural Solution!</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                Glucotonic is a powerful, meticulously developed formula designed to target the root causes of blood sugar imbalances, paving the way for a healthier, more energetic life.
+            </p>
+        </div>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+            <!-- Lista de benefícios detalhados -->
+            <div class="md:w-full text-left bg-gray-50 p-8 rounded-xl shadow-md">
+                <h3 class="text-2xl font-semibold mb-4 text-glucotonic-dark-green">How Glucotonic Can Transform Your Life:</h3>
+                <ul class="list-disc list-inside space-y-3 text-gray-700 text-lg">
+                    <li>✔️ <strong>Rapid Blood Sugar Regulation:</strong> Helps maintain stable levels, preventing drastic fluctuations.</li>
+                    <li>✔️ <strong>Eliminates Cravings:</strong> Reduces urges for sweets and carbohydrates, supporting healthy eating habits.</li>
+                    <li>✔️ <strong>Naturally Boosts Energy:</strong> Feel more active and productive throughout your day, free from fatigue.</li>
+                    <li>✔️ <strong>Powerful, Natural Formula:</strong> Developed with carefully selected ingredients for maximum effectiveness and safety.</li>
+                    <li>✔️ <strong>Thousands of Satisfied Users:</strong> Join the Glucotonic community and experience the difference!</li>
+                </ul>
+                
+                <!-- Imagem adicional de apoio ao produto -->
+              <div class="mt-8 text-center">
+                    <h4 class="text-xl font-semibold mb-4 text-glucotonic-dark-green">Discover What Makes Glucotonic Unique:</h4>
+                    <img src="https://getglucotonic.com/assets/img/bottle-label.webp" 
+                         onerror="this.onerror=null;this.src='https://getglucotonic.com/assets/img/bottle-label.webp';"
+                         alt="Additional Glucotonic visual" class="rounded-lg shadow-md w-full h-auto max-w-xl mx-auto">
+               </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section - Importante para engajamento e prova social -->
+    <section class="py-12 md:py-16 glucotonic-dark-bg text-white shadow-md rounded-lg mx-auto mt-8 px-6 container">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-4xl font-bold text-yellow-300 mb-4">See Glucotonic in Action!</h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
+                Watch this short video to understand how Glucotonic works and why it's the natural choice for balancing your blood sugar and boosting your energy.
+            </p>
+            <div class="flex justify-center">
+                <!-- Por favor, substitua o iframe abaixo pelo CÓDIGO DE INCORPORAÇÃO real do seu vídeo (YouTube/Vimeo são recomendados). -->
+                <!-- Certifique-se de que o vídeo seja responsivo. -->
+                <div class="relative w-full" style="padding-top: 56.25%;"> <!-- Proporção 16:9 para vídeos responsivos -->
+                    <iframe class="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
+                            src="https://drive.google.com/file/d/18D4kPQ0-T6VZ7qQzlkBc9U77vqiN6HAy/preview?authuser=0" 
+                            frameborder="0" allowfullscreen
+                            title="Glucotonic Product Video"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section (300x250) - CTA visual -->
+    <section class="py-8 bg-gray-100 text-center rounded-lg mx-auto mt-8 px-6 container shadow-md">
+        <div class="flex justify-center">
+            <!-- Por favor, substitua esta URL pela URL real da sua imagem de banner 300x250. -->
+            <!-- Exemplo de placeholder com texto: https://placehold.co/300x250/d1fae5/065f46?text=BANNER+300x250 -->
+            <a href="https://getglucotonic.com/d/order-now.php#aff=Legnar" target="_blank" id="banner-cta-link">
+                <img src="https://horror-world.com/wp-content/uploads/Sugar-defender-banner-300x250-1.jpg" 
+                     onerror="this.onerror=null;this.src='https://horror-world.com/wp-content/uploads/Sugar-defender-banner-300x250-1.jpg';"
+                     alt="Glucotonic Promotional Banner" class="rounded-lg shadow-md max-w-full h-auto">
+            </a>
+        </div>
+    </section>
+
+    <!-- Call to Action Section - Chamada final para ação -->
+    <section class="py-12 md:py-16 glucotonic-light-accent-bg text-center rounded-lg mx-auto mt-8 px-6 container shadow-md">
+        <h2 class="text-2xl md:text-4xl font-bold text-glucotonic-dark-green mb-6">Ready to Transform Your Health?</h2>
+        <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
+            Don't let blood sugar imbalances control your life. Take the first step towards more energy, fewer cravings, and lasting well-being with Glucotonic!
+        </p>
+        <!-- Botão CTA final -->
+        <a href="https://getglucotonic.com/d/order-now.php#aff=Legnar" target="_blank" rel="noopener noreferrer"
+           id="cta-button-bottom"
+           class="glucotonic-cta-btn inline-block text-white font-bold py-5 px-10 rounded-full shadow-xl hover:scale-105 transform transition duration-300 ease-in-out text-2xl md:text-3xl animate-pulse">
+            Click Here to Secure Your Glucotonic Supply TODAY!
+        </a>
+        <p class="mt-6 text-sm text-gray-600">
+            *By clicking, you will be redirected to the official and secure product website to complete your purchase.
+        </p>
+    </section>
+
+    <!-- Disclaimer Section - Rodapé com avisos de conformidade -->
+    <footer class="glucotonic-dark-bg text-white text-center text-sm rounded-t-xl mt-8">
+        <div class="container mx-auto px-6 py-8">
+            <p class="mb-4">
+                <strong>Disclaimer:</strong> Individual results may vary. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult with a qualified healthcare professional before starting any new supplement.
+            </p>
+            <p>&copy; 2025 Glucotonic Affiliate. All rights reserved. | For inquiries, please refer to the official product website.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para rolagem suave (melhora a UX) e RASTREAMENTO DE CLIQUES -->
+    <script>
+        // Smooth scrolling para âncoras (opcional, mas melhora a experiência do usuário)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // INÍCIO DO RASTREAMENTO DE EVENTOS PARA GOOGLE ANALYTICS E GOOGLE ADS
+        // Esta função garante que as chamadas gtag() sejam feitas após o carregamento completo.
+        (function() {
+            // Elementos clicáveis que queremos rastrear
+            const trackableElements = document.querySelectorAll('#cta-button-hero, #cta-button-bottom, #banner-cta-link');
+
+            trackableElements.forEach(element => {
+                element.addEventListener('click', function() {
+                    console.log('Botão clicado para rastreamento:', element.id);
+
+                    // Verifica se gtag está definido antes de usar, para evitar erros
+                    if (typeof window.gtag === 'function') {
+                        // Evento Google Analytics 4 (GA4) - 'cta_click'
+                        gtag('event', 'cta_click', {
+                            'event_category': 'Engagement',
+                            'event_label': 'Glucotonic_Affiliate_Link_Click_' + this.id, // Usa o ID do botão clicado
+                            'value': 1 // Valor opcional do evento
+                        });
+                        console.log('Evento GA4 "cta_click" disparado para: ' + this.id);
+
+                        // Evento de Conversão do Google Ads - 'conversion'
+                        // Chama a função gtag_report_conversion()
+                        if (typeof window.gtag_report_conversion === 'function') {
+                            gtag_report_conversion();
+                            console.log('Conversão do Google Ads disparada para: ' + this.id);
+                        } else {
+                            console.log('Função gtag_report_conversion não encontrada.');
+                        }
+                    } else {
+                        console.log('gtag() não disponível para rastreamento.');
+                    }
+                });
+            });
+        })();
+        // FIM DO RASTREAMENTO DE EVENTOS
+    </script>
+</body>
+</html>
