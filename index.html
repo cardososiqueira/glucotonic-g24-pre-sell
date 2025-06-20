@@ -56,8 +56,14 @@
 
     <!-- INÍCIO DAS TAGS DE RASTREAMENTO DO GOOGLE (OTIMIZADAS PARA GITHUB PAGES) -->
     <!-- Como esta página será hospedada diretamente (ex: via GitHub Pages),
-         as tags gtag.js para Google Analytics 4 e Google Ads podem ser incluídas
-         diretamente no <head> e funcionarão sem problemas de iframe/CSP. -->
+         as tags gtag.js para Google Analytics 4 podem ser incluídas
+         diretamente no <head> e funcionarão sem problemas de iframe/CSP.
+
+         IMPORTANTE: A tag de conversão DIRETA do Google Ads (AW-xxxxxxxxxx)
+         foi REMOVIDA. A recomendação agora é importar a conversão (o evento 'cta_click')
+         DIRETAMENTE do Google Analytics 4 para o Google Ads, após vincular as contas.
+         Isso evita duplicação e simplifica o rastreamento.
+    -->
 
     <!-- GOOGLE ANALYTICS 4 (GA4) Global Site Tag (gtag.js) -->
     <!-- O 'async' garante que o carregamento não bloqueie a renderização da página. -->
@@ -67,39 +73,12 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-5VFGCD0NBR'); // Seu ID da Métrica do Google Analytics 4
+      
+      // O comando gtag('set', {'debug_mode': true}); foi removido.
+      // Ele é usado apenas para depuração e não deve estar em produção para evitar poluição de dados.
+      // Para depurar, use a extensão Google Tag Assistant no Chrome ou adicione ?_dbg=1 ao URL manualmente.
     </script>
 
-    <!-- GOOGLE ADS Global Site Tag (gtag.js) e Snippet de Evento -->
-    <!-- Este script é necessário para o rastreamento de conversões do Google Ads. -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17221338612"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17221338612'); // Seu ID de Conversão do Google Ads
-    </script>
-
-    <!-- Função de Relatório de Conversão do Google Ads (para cliques em CTA) -->
-    <!-- Esta função será chamada pelo JavaScript dos botões CTA. -->
-    <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          // Em um ambiente real, você pode querer redirecionar aqui,
-          // mas como o link já abre em uma nova aba (_blank),
-          // o redirecionamento manual é desnecessário.
-          // window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-17221338612/I86-CLHkkt8aEPSL45NA', // Seu ID e Rótulo de Conversão do Google Ads
-          'value': 1.0, // Valor da conversão (ajuste conforme o valor do lead/clique)
-          'currency': 'USD', // Moeda da conversão
-          'event_callback': callback // Callback para executar após o evento ser enviado
-      });
-      return false; // Retorna false para não interferir com o clique do link
-    }
-    </script>
     <!-- FIM DAS TAGS DE RASTREAMENTO DO GOOGLE -->
 
 </head>
@@ -266,10 +245,13 @@
             });
         });
 
-        // INÍCIO DO RASTREAMENTO DE EVENTOS PARA GOOGLE ANALYTICS E GOOGLE ADS
-        // Esta função garante que as chamadas gtag() sejam feitas após o carregamento completo.
+        // INÍCIO DO RASTREAMENTO DE EVENTOS PARA GOOGLE ANALYTICS
+        // Este script dispara os eventos diretamente usando gtag(),
+        // pois a tag gtag.js para GA4 está incluída no head deste próprio HTML.
+
+        // Envolve o código de rastreamento em uma IIFE para evitar conflitos de escopo
         (function() {
-            // Elementos clicáveis que queremos rastrear
+            // IDs dos elementos clicáveis que queremos rastrear
             const trackableElements = document.querySelectorAll('#cta-button-hero, #cta-button-bottom, #banner-cta-link');
 
             trackableElements.forEach(element => {
@@ -286,14 +268,9 @@
                         });
                         console.log('Evento GA4 "cta_click" disparado para: ' + this.id);
 
-                        // Evento de Conversão do Google Ads - 'conversion'
-                        // Chama a função gtag_report_conversion()
-                        if (typeof window.gtag_report_conversion === 'function') {
-                            gtag_report_conversion();
-                            console.log('Conversão do Google Ads disparada para: ' + this.id);
-                        } else {
-                            console.log('Função gtag_report_conversion não encontrada.');
-                        }
+                        // O EVENTO DE CONVERSÃO DIRETA DO GOOGLE ADS FOI REMOVIDO DAQUI.
+                        // Agora, a conversão para o Google Ads será importada do GA4
+                        // após você vincular as contas e marcar 'cta_click' como conversão no GA4.
                     } else {
                         console.log('gtag() não disponível para rastreamento.');
                     }
