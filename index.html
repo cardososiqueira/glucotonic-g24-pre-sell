@@ -279,5 +279,37 @@
         })();
         // FIM DO RASTREAMENTO DE EVENTOS
     </script>
+
+    <!-- << NOVO >> SCRIPT DE RASTREAMENTO DE ENGAJAMENTO (SCROLL) -->
+    <script>
+        (function() {
+            let scrollEventFired = false; // Flag para garantir que o evento dispare apenas uma vez
+            
+            window.addEventListener('scroll', function() {
+                // Se o evento já foi disparado, não faz mais nada
+                if (scrollEventFired) {
+                    return;
+                }
+
+                // Calcula a porcentagem de rolagem da página
+                const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+
+                // Dispara o evento se o usuário rolar mais de 75% da página
+                if (scrollPercentage >= 75) {
+                    console.log('Scroll de 75% atingido. Disparando evento.');
+                    
+                    if (typeof window.gtag === 'function') {
+                        gtag('event', 'scroll_75_percent', {
+                            'event_category': 'Engagement',
+                            'event_label': 'Deep_Page_Scroll'
+                        });
+                        console.log('Evento GA4 "scroll_75_percent" disparado.');
+                    }
+                    
+                    scrollEventFired = true; // Marca que o evento já foi disparado
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
