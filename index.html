@@ -928,6 +928,31 @@
             });
         })();
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gclid = urlParams.get('gclid'); // Captura o GCLID da URL (ex: ?gclid=XYZ)
+
+            if (gclid) {
+                // Este seletor busca TODOS os links na sua página que apontam para 'digistore24.com' ou 'checkout-ds24.com'
+                const digistoreLinks = document.querySelectorAll('a[href*="digistore24.com"], a[href*="checkout-ds24.com"]');
+
+                digistoreLinks.forEach(link => {
+                    const originalHref = link.href;
+                    // Verifica se o link já tem parâmetros (?) ou se o primeiro parâmetro é &
+                    const separator = originalHref.includes('?') ? '&' : '?';
+
+                    // O Digistore24 CONFIRMOU que espera o GCLID no parâmetro 'cid'
+                    link.href = originalHref + separator + 'cid=' + gclid;
+
+                    console.log('GCLID adicionado ao link Digistore24:', link.href); // Para depuração
+                });
+            } else {
+                console.log('GCLID não encontrado na URL. Certifique-se de que o auto-tagging do Google Ads esteja ativado e a URL final do seu anúncio esteja correta.');
+            }
+        });
+    </script>
 </body>
 
 </html>
