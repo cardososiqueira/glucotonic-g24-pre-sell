@@ -930,29 +930,44 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener("DOMContentLoaded", function () {
             const urlParams = new URLSearchParams(window.location.search);
-            const gclid = urlParams.get('gclid'); // Captura o GCLID da URL (ex: ?gclid=XYZ)
+            const gclid = urlParams.get("gclid"); // Captura o GCLID da URL
 
             if (gclid) {
-                // Este seletor busca TODOS os links na sua página que apontam para 'digistore24.com' ou 'checkout-ds24.com'
-                const digistoreLinks = document.querySelectorAll('a[href*="getglucotonic.com"]');
+                // Seleciona todos os links que contêm "getglucotonic.com" no href
+                const glucotonicLinks = document.querySelectorAll("a[href*=\"getglucotonic.com\"]");
 
-                digistoreLinks.forEach(link => {
-                    const originalHref = link.href;
-                    // Verifica se o link já tem parâmetros (?) ou se o primeiro parâmetro é &
-                    const separator = originalHref.includes('?') ? '&' : '?';
+                glucotonicLinks.forEach(link => {
+                    const originalHref = link.getAttribute("href"); // Obtém o valor original do atributo href
+                    if (!originalHref) return; // Pula se o href estiver vazio
 
-                    // O Digistore24 CONFIRMOU que espera o GCLID no parâmetro 'cid'
-                    link.href = originalHref + separator + 'cid=' + gclid;
+                    let baseUrl = originalHref;
+                    let hash = "";
 
-                    console.log('GCLID adicionado ao link Digistore24:', link.href); // Para depuração
+                    // Separa a URL base do hash (#), se existir
+                    const hashIndex = originalHref.indexOf("#");
+                    if (hashIndex !== -1) {
+                        baseUrl = originalHref.substring(0, hashIndex);
+                        hash = originalHref.substring(hashIndex);
+                    }
+
+                    try {
+                        // Cria um objeto URL para manipular os parâmetros de consulta de forma segura
+                        const urlObj = new URL(baseUrl);
+                        urlObj.searchParams.set("cid", gclid); // Adiciona ou atualiza o parâmetro "cid" com o GCLID
+
+                        // Reconstrói o href com o GCLID e o hash na ordem correta
+                        link.href = urlObj.toString() + hash;
+                        console.log("URL FINAL CONSTRUÍDA:", link.href); // Para depuração
+                    } catch (e) {
+                        console.error("Erro ao processar URL com URL object:", originalHref, e);
+                    }
                 });
             } else {
-                console.log('GCLID não encontrado na URL. Certifique-se de que o auto-tagging do Google Ads esteja ativado e a URL final do seu anúncio esteja correta.');
+                console.log("GCLID não encontrado na URL de entrada.");
             }
         });
     </script>
 </body>
-
 </html>
